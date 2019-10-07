@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/kraygh1.wav-2a1e84549f2861e0878e0f36b60d40fc.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Area 51 SF part 2/kraygh1.wav"
+dest_files=[ "res://.import/kraygh1.wav-2a1e84549f2861e0878e0f36b60d40fc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

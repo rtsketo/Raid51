@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/text3.wav-4dd7ceeee60d1ef3cbb725cfc850d021.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Area 51 SF part 2/text3.wav"
+dest_files=[ "res://.import/text3.wav-4dd7ceeee60d1ef3cbb725cfc850d021.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

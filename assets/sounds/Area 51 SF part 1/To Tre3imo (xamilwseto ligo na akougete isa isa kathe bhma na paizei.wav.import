@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/To Tre3imo (xamilwseto ligo na akougete isa isa kathe bhma na paizei.wav-10d21058d2c6168e4e4b53015f53b037.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Area 51 SF part 1/To Tre3imo (xamilwseto ligo na akougete isa isa kathe bhma na paizei.wav"
+dest_files=[ "res://.import/To Tre3imo (xamilwseto ligo na akougete isa isa kathe bhma na paizei.wav-10d21058d2c6168e4e4b53015f53b037.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

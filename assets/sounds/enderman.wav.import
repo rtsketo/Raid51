@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enderman.wav-83aec4496f5450231e75d4f7aa2b458b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/enderman.wav"
+dest_files=[ "res://.import/enderman.wav-83aec4496f5450231e75d4f7aa2b458b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://entities/Obstacle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Moba.gd" type="Script" id=2]
+[ext_resource path="res://assets/obstacles/mobaki/m1.png" type="Texture" id=3]
+[ext_resource path="res://assets/obstacles/mobaki/m2kai4.png" type="Texture" id=4]
+[ext_resource path="res://assets/obstacles/mobaki/m3.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="Obstacle" instance=ExtResource( 1 )]
+
+[node name="Node2D" type="Node2D" parent="." index="0"]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Graphics" index="1"]
+position = Vector2( 0.814514, -18.7337 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 1 )
+playing = true

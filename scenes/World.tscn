@@ -1,0 +1,185 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/World.gd" type="Script" id=1]
+[ext_resource path="res://assets/bg/sky.png" type="Texture" id=2]
+[ext_resource path="res://assets/bg/mountains 3.png" type="Texture" id=3]
+[ext_resource path="res://assets/bg/mountains 2.png" type="Texture" id=4]
+[ext_resource path="res://assets/bg/mountains 1.png" type="Texture" id=5]
+[ext_resource path="res://assets/bg/bgggggggg.png" type="Texture" id=6]
+[ext_resource path="res://assets/bg/bgj.png" type="Texture" id=7]
+[ext_resource path="res://assets/bg/ground.png" type="Texture" id=8]
+[ext_resource path="res://assets/bg/bg.png" type="Texture" id=9]
+[ext_resource path="res://entities/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/Obstacles/StartFench.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Ending.tscn" type="PackedScene" id=12]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[node name="Cosmos" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.67451, 0.701961, 0.941176, 1 )
+position = Vector2( 74.1657, 27.8891 )
+motion_scale = Vector2( 0.05, 1 )
+motion_mirroring = Vector2( 2698, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 677, 21 )
+scale = Vector2( 0.6, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 2026, 21 )
+scale = Vector2( -0.6, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 74.1657, 27.8891 )
+motion_scale = Vector2( 0.1, 0 )
+motion_mirroring = Vector2( 1349.65, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+visible = false
+modulate = Color( 0.247059, 0.247059, 0.247059, 1 )
+position = Vector2( 675.486, 14.1743 )
+scale = Vector2( 0.6, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 74.1657, 27.8891 )
+motion_scale = Vector2( 0.12, 0 )
+motion_mirroring = Vector2( 1237.2, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 675.486, 14.1743 )
+scale = Vector2( 0.6, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 74.1657, 27.8891 )
+motion_scale = Vector2( 0.13, 0 )
+motion_mirroring = Vector2( 1350, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 675.486, 14.1743 )
+scale = Vector2( 0.6, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+visible = false
+modulate = Color( 0.290196, 0.298039, 0.905882, 0.254902 )
+position = Vector2( 899.263, -279.824 )
+scale = Vector2( 0.5, 0.2 )
+motion_mirroring = Vector2( 4093, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer7"]
+material = SubResource( 1 )
+texture = ExtResource( 6 )
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 3659, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer8"]
+position = Vector2( 523.881, 76.1756 )
+scale = Vector2( -0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer8"]
+position = Vector2( 2353, 76.176 )
+scale = Vector2( -0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 67.3639, 15.6458 )
+motion_scale = Vector2( 1, 0 )
+motion_mirroring = Vector2( 1350, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+modulate = Color( 0.705882, 0.678431, 0.270588, 1 )
+position = Vector2( 678.349, -73.8969 )
+scale = Vector2( 0.6, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 525, -5 )
+motion_mirroring = Vector2( 2455.8, 0 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+modulate = Color( 1, 1, 1, 0.454902 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+modulate = Color( 1, 1, 1, 0.454902 )
+position = Vector2( 1227.9, 0 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 575, 65 )
+motion_mirroring = Vector2( 2455.8, 0 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer9"]
+modulate = Color( 1, 1, 1, 0.454902 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer9"]
+modulate = Color( 1, 1, 1, 0.454902 )
+position = Vector2( 1227.9, 0 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 625, 135 )
+motion_mirroring = Vector2( 2455.8, 0 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer10"]
+modulate = Color( 1, 1, 1, 0.454902 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer10"]
+modulate = Color( 1, 1, 1, 0.454902 )
+position = Vector2( 1227.9, 0 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 675, 205 )
+motion_mirroring = Vector2( 2455.8, 0 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer11"]
+modulate = Color( 1, 1, 1, 0.454902 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer11"]
+modulate = Color( 1, 1, 1, 0.454902 )
+position = Vector2( 1227.9, 0 )
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="Player" parent="." instance=ExtResource( 10 )]
+
+[node name="Fench" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2096.44, 51.1229 )
+scale = Vector2( 2, 2 )
+
+[node name="Ending" parent="." instance=ExtResource( 12 )]
+position = Vector2( 75000, 0 )

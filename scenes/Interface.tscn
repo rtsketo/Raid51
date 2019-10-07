@@ -1,0 +1,135 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://outline.shader" type="Shader" id=1]
+[ext_resource path="res://scripts/Interface.gd" type="Script" id=2]
+[ext_resource path="res://assets/bg/raid51.png" type="Texture" id=3]
+[ext_resource path="res://CRT_Shader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/speaker.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Supercell-Magic_5.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://entities/Obstacles/Reporter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sounds/Area 51 SF part 1/Menu.ogg" type="AudioStream" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/Smooth = true
+shader_param/width = 1.0
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/pixel_size = 4
+
+[sub_resource type="CanvasItemMaterial" id=2]
+next_pass = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 6 )
+
+[node name="Interface" type="Control"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="BG" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Anime" type="AnimationPlayer" parent="BG"]
+anims/Fade = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="BG"]
+material = SubResource( 4 )
+position = Vector2( 580.86, -52.4626 )
+scale = Vector2( 0.655125, 0.655125 )
+texture = ExtResource( 3 )
+
+[node name="CRT_Shader_Control" parent="." instance=ExtResource( 4 )]
+margin_left = 88.4243
+margin_top = -302.003
+margin_right = 88.4243
+margin_bottom = -302.003
+
+[node name="Control" type="Control" parent="."]
+editor/display_folded = true
+margin_left = 89.9358
+margin_top = -298.587
+margin_right = 129.936
+margin_bottom = -258.587
+
+[node name="Volume" type="Button" parent="Control"]
+margin_left = 972.241
+margin_top = 10.2964
+margin_right = 1678.24
+margin_bottom = 816.296
+rect_scale = Vector2( 0.05, 0.05 )
+icon = ExtResource( 5 )
+flat = true
+
+[node name="VSlider" type="VSlider" parent="Control"]
+visible = false
+margin_left = 985.398
+margin_top = 56.9226
+margin_right = 1001.4
+margin_bottom = 216.922
+min_value = -50.0
+max_value = 10.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 373.866
+margin_top = 406.568
+margin_right = 627.866
+margin_bottom = 425.568
+custom_fonts/font = SubResource( 5 )
+text = "Press [Enter] to raid!"
+
+[node name="Obstacle" parent="." instance=ExtResource( 7 )]
+position = Vector2( 834.06, 202.03 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 600, 0 )
+current = true
+process_mode = 0
+limit_smoothed = true
+drag_margin_h_enabled = false
+smoothing_enabled = true
+smoothing_speed = 3.0
+drag_margin_left = 0.0
+drag_margin_top = 1.0
+drag_margin_right = 0.0
+drag_margin_bottom = 1.0
+editor_draw_drag_margin = true
+
+[node name="IntroMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Fader" type="Timer" parent="IntroMusic"]
+wait_time = 0.2
+
+[node name="Starter" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+[connection signal="pressed" from="Control/Volume" to="." method="_on_Volume_pressed"]
+[connection signal="changed" from="Control/VSlider" to="." method="_on_VSlider_changed"]
+[connection signal="mouse_exited" from="Control/VSlider" to="." method="_on_VSlider_mouse_exited"]
+[connection signal="value_changed" from="Control/VSlider" to="." method="_on_VSlider_value_changed"]
+[connection signal="timeout" from="IntroMusic/Fader" to="." method="_on_Fader_timeout"]
+[connection signal="timeout" from="Starter" to="." method="_on_Starter_timeout"]
