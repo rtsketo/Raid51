@@ -6,28 +6,29 @@ var items = []
 var ending = false
 var start = false
 var ended = false
-var music = true
-var hype = false
+var press = false
 var mach = false
 var hit = false
 
 var endingTime = 0
-var startTime = 180
+#var startTime = 180
 
 var maxSpeed = 200
 var speed = 50
 var speedX = 0
 var speedY = 0
 var endingCount
+var diff = 0
+var pos = 0
 var dir = 1
 
-var hitMeBaby = [
+onready var hitMeBaby = [
 preload("res://assets/sounds/Area 51 SF part 2/kraygh1.wav"),
 preload("res://assets/sounds/Area 51 SF part 2/kraygh2.wav"),
 preload("res://assets/sounds/Area 51 SF part 2/kraugh3.wav"),
 preload("res://assets/sounds/Area 51 SF part 2/kraugh4.wav")]
 
-var yeahBaby = [
+onready var yeahBaby = [
 preload("res://assets/sounds/Area 51 SF part 3/yeah1.wav"),
 preload("res://assets/sounds/Area 51 SF part 3/yeah2.wav"),
 preload("res://assets/sounds/Area 51 SF part 3/yooho1.wav"),
@@ -56,16 +57,21 @@ func _ready():
 	$Ending/Control/Item8]
 
 func _process(delta):
+	var calibra = 7
 	var preDir = dir
 	speedX += speed
 	
 	if ended and Input.is_action_pressed("ui_accept"):
 		var root = get_tree().get_root() 
+		Input.action_release("ui_accept")
 		root.get_child(root.get_child_count()-1).queue_free()
 		var ui = load("res://scenes/Interface.tscn").instance()
 		root.add_child(ui)
 	
-	if Input.is_action_pressed("ui_up"):
+	if diff != 0:
+		speedY = abs(diff) * calibra
+		dir = -sign(diff)
+	elif Input.is_action_pressed("ui_up"):
 		speedY += speed
 		dir = -1
 	elif Input.is_action_pressed("ui_down"):
@@ -108,7 +114,8 @@ func _process(delta):
 		else: speedY = 0
 	
 	if !start: speedX = 0
-	if $Graphics/Anime.animation != "Run": speedY = 0
+	if $Graphics/Anime.animation != "Run":
+		speedY = 0
 	
 	#move_and_collide(Vector2(speedX, dir*speedY)*delta)
 	move_local_x(speedX*delta)
@@ -118,6 +125,7 @@ func slow_down():
 	hit = true
 	$Graphics/Anime.play("Hit")
 	$Hit.stream = hitMeBaby[randi()%4]
+	$Graphics/Shadow.play("Shadow")
 	$Hit.play()
 
 func speed_up(collectable):
@@ -132,13 +140,9 @@ func _on_Timer_timeout():
 	if speedX > 800 and !mach:
 		$Particles.visible = true
 		$Nitro.play()
-		music = false
-		hype = true
 		mach = true
 	elif speedX < 800 and mach:
 		$Particles.visible = false
-		music = true
-		hype = false
 		mach = false
 
 func _on_StartTimer_timeout():
@@ -193,19 +197,28 @@ func _on_MusicFader_timeout():
 #		decreaseDB($Music, 5)
 #		increaseDB($Hype, 5)
 #	else:
-	decreaseDB($Music, 1)
+#	decreaseDB($Music, 1)
 	decreaseDB($Hype, 1)
 
 func decreaseDB(node, x):
-	if node.volume_db > -50:
+	if node.volume_db > -70:
 		node.volume_db -= x
 
-func increaseDB(node, x):
-	if node.volume_db < -x:
-		node.volume_db += x
-	
-	
+#func increaseDB(node, x):
+#	if node.volume_db < -x:
+#		node.volume_db += x
 
-
+func _input(event):
+	if event is InputEventScreenDrag and press:
+		var posy = event.position.y
+		diff = pos - posy
+	
+	if event is InputEventScreenTouch:
+		if event.is_pressed():
+			pos = event.position.y
+			press = true
+		else: 
+			press = false
+			diff = 0
 
 

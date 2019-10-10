@@ -3,10 +3,10 @@
 [ext_resource path="res://Fench.gd" type="Script" id=1]
 [ext_resource path="res://assets/obstacles/start/skia.png" type="Texture" id=2]
 [ext_resource path="res://assets/obstacles/start/aristera.png" type="Texture" id=3]
-[ext_resource path="res://assets/obstacles/start/pesmenolayer-.png" type="Texture" id=4]
-[ext_resource path="res://assets/obstacles/start/pesmenolayer+++.png" type="Texture" id=5]
-[ext_resource path="res://assets/obstacles/start/μονητης.png" type="Texture" id=6]
-[ext_resource path="res://assets/obstacles/start/μονοςτου.png" type="Texture" id=7]
+[ext_resource path="res://assets/obstacles/start/pesmenolayerM.png" type="Texture" id=4]
+[ext_resource path="res://assets/obstacles/start/pesmenolayerPP.png" type="Texture" id=5]
+[ext_resource path="res://assets/obstacles/start/signsketo.png" type="Texture" id=6]
+[ext_resource path="res://assets/obstacles/start/fenchsketo.png" type="Texture" id=7]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( -152.213, -55.0962 )

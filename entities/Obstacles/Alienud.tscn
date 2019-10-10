@@ -2,8 +2,8 @@
 
 [ext_resource path="res://entities/Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shadow2.png" type="Texture" id=2]
-[ext_resource path="res://assets/obstacles/alienoud/αλιενούδ φρειμ 1.png" type="Texture" id=3]
-[ext_resource path="res://assets/obstacles/alienoud/αλιενούδ φρειμ 2.png" type="Texture" id=4]
+[ext_resource path="res://assets/obstacles/alienoud/alienud1.png" type="Texture" id=3]
+[ext_resource path="res://assets/obstacles/alienoud/alienud2.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,4 +23,5 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Graphics" index="1"]
 position = Vector2( 1.85504, -2.53523 )
 frames = SubResource( 1 )
+frame = 1
 playing = true

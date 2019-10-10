@@ -24,5 +24,4 @@ texture = ExtResource( 2 )
 modulate = Color( 0.607843, 0.670588, 1, 1 )
 position = Vector2( -0.418121, -10.0349 )
 frames = SubResource( 1 )
-frame = 1
 playing = true

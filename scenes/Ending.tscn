@@ -109,7 +109,7 @@ margin_bottom = 40.0
 position = Vector2( 815.75, 2.47076 )
 z_index = 6
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="TheEnd2" type="Sprite" parent="Portal"]
@@ -128,6 +128,7 @@ texture = ExtResource( 6 )
 [node name="Behind" type="AnimatedSprite" parent="Portal"]
 position = Vector2( -367.779, -78.4017 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="LGraphs" type="AnimatedSprite" parent="Portal"]

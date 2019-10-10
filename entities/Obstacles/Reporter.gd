@@ -33,7 +33,7 @@ func _on_Timer_timeout():
 	remove_child(dia)
 	
 	if tal == talk.size() - 1:
-		 tal = -1
+		tal = -1
 	tal += 1
 	dia = dialog(talk[tal])
 	timer = false

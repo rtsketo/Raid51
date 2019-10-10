@@ -47,7 +47,6 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="BG" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -56,7 +55,7 @@ anims/Fade = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="BG"]
 material = SubResource( 4 )
-position = Vector2( 580.86, -52.4626 )
+position = Vector2( 584.86, -52.4626 )
 scale = Vector2( 0.655125, 0.655125 )
 texture = ExtResource( 3 )
 
@@ -67,13 +66,13 @@ margin_right = 88.4243
 margin_bottom = -302.003
 
 [node name="Control" type="Control" parent="."]
-editor/display_folded = true
 margin_left = 89.9358
 margin_top = -298.587
 margin_right = 129.936
 margin_bottom = -258.587
 
 [node name="Volume" type="Button" parent="Control"]
+visible = false
 margin_left = 972.241
 margin_top = 10.2964
 margin_right = 1678.24
@@ -93,12 +92,16 @@ max_value = 10.0
 ticks_on_borders = true
 
 [node name="Label" type="Label" parent="Control"]
-margin_left = 373.866
+margin_left = 383.866
 margin_top = 406.568
-margin_right = 627.866
+margin_right = 637.866
 margin_bottom = 425.568
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = SubResource( 5 )
 text = "Press [Enter] to raid!"
+align = 1
+valign = 1
 
 [node name="Obstacle" parent="." instance=ExtResource( 7 )]
 position = Vector2( 834.06, 202.03 )
@@ -106,7 +109,6 @@ position = Vector2( 834.06, 202.03 )
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 600, 0 )
 current = true
-process_mode = 0
 limit_smoothed = true
 drag_margin_h_enabled = false
 smoothing_enabled = true

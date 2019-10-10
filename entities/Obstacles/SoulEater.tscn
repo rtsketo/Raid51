@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Node2D.gd" type="Script" id=2]
-[ext_resource path="res://assets/obstacles/little allien/e1.png" type="Texture" id=3]
-[ext_resource path="res://assets/obstacles/little allien/e2kai4.png" type="Texture" id=4]
-[ext_resource path="res://assets/obstacles/little allien/e3.png" type="Texture" id=5]
+[ext_resource path="res://assets/shadow1.png" type="Texture" id=3]
+[ext_resource path="res://assets/obstacles/little allien/e1.png" type="Texture" id=4]
+[ext_resource path="res://assets/obstacles/little allien/e2kai4.png" type="Texture" id=5]
+[ext_resource path="res://assets/obstacles/little allien/e3.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 20.0
@@ -19,9 +20,14 @@ animations = [ {
 [node name="Node2D" type="Node2D" parent="." index="0"]
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="Graphics" index="0"]
+position = Vector2( -1.07547, 15.4149 )
+scale = Vector2( 1.19378, 1 )
+texture = ExtResource( 3 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Graphics" index="1"]
 position = Vector2( 16.5855, -4.64395 )
 scale = Vector2( 1.2, 1.2 )
 frames = SubResource( 1 )
-frame = 3
+frame = 2
 playing = true

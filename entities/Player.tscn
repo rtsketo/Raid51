@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/shadow1.png" type="Texture" id=2]
@@ -16,13 +16,12 @@
 [ext_resource path="res://assets/runner/f8.png" type="Texture" id=14]
 [ext_resource path="res://assets/particle.png" type="Texture" id=15]
 [ext_resource path="res://assets/sounds/Area 51 SF part 1/Otan Pernei Nitro.wav" type="AudioStream" id=16]
-[ext_resource path="res://assets/sounds/Japanese_Battle_Music_-_Warrior_Princess.ogg" type="AudioStream" id=17]
-[ext_resource path="res://assets/sounds/NOMA - Brain Power (Off-Vocal).ogg" type="AudioStream" id=18]
-[ext_resource path="res://assets/sounds/Area 51 SF part 3/telostragoui.ogg" type="AudioStream" id=19]
-[ext_resource path="res://scenes/TimeIndicator.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/fonts/Supercell-Magic_5.ttf" type="DynamicFontData" id=21]
-[ext_resource path="res://assets/sounds/Area 51 SF part 1/Play Button.wav" type="AudioStream" id=22]
-[ext_resource path="res://CRT_Shader.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/sounds/NOMA - Brain Power (Off-Vocal).ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/Area 51 SF part 3/telostragoui.ogg" type="AudioStream" id=18]
+[ext_resource path="res://scenes/TimeIndicator.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/fonts/Supercell-Magic_5.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://assets/sounds/Area 51 SF part 1/Play Button.wav" type="AudioStream" id=21]
+[ext_resource path="res://CRT_Shader.tscn" type="PackedScene" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -37,16 +36,44 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 20.0
+[sub_resource type="Animation" id=2]
+resource_name = "Shadow"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 27 ), Vector2( 31.2, 32 ), Vector2( 31.2, 32 ), Vector2( 10, 27 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, 1 ), Vector2( 2, 1 ), Vector2( 2, 1 ), Vector2( 3, 1 ) ]
+}
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 6.0
+
+[sub_resource type="CanvasItemMaterial" id=4]
 particles_animation = true
 particles_anim_h_frames = 2
 particles_anim_v_frames = 2
 particles_anim_loop = false
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 1
 emission_sphere_radius = 63.27
 flag_disable_z = true
@@ -58,10 +85,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 anim_speed = 1.0
 
-[sub_resource type="AudioStreamSample" id=5]
-
 [sub_resource type="Animation" id=6]
-resource_name = "End"
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cam:position")
@@ -90,10 +114,10 @@ tracks/1/keys = {
 
 [sub_resource type="DynamicFont" id=7]
 size = 18
-font_data = ExtResource( 21 )
+font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 21 )
+font_data = ExtResource( 20 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -102,25 +126,29 @@ script = ExtResource( 1 )
 position = Vector2( -1.99026, -7.96106 )
 
 [node name="Sprite" type="Sprite" parent="Graphics"]
-position = Vector2( -4.64395, 27.2003 )
-scale = Vector2( 2, 1 )
+position = Vector2( 10, 27 )
+scale = Vector2( 3, 1 )
 texture = ExtResource( 2 )
 
 [node name="Anime" type="AnimatedSprite" parent="Graphics"]
 position = Vector2( 15.1984, -26.6359 )
 frames = SubResource( 1 )
 animation = "Run"
-frame = 7
+frame = 1
 playing = true
 
+[node name="Shadow" type="AnimationPlayer" parent="Graphics"]
+anims/Shadow = SubResource( 2 )
+
 [node name="Colli" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+position = Vector2( 0, 20 )
+rotation = 1.5708
+shape = SubResource( 3 )
 
 [node name="Cam" type="Camera2D" parent="."]
 modulate = Color( 0.886275, 0.588235, 0.588235, 1 )
 position = Vector2( 600, 0 )
 current = true
-process_mode = 0
 limit_smoothed = true
 drag_margin_h_enabled = false
 smoothing_enabled = true
@@ -134,48 +162,41 @@ editor_draw_drag_margin = true
 [node name="Particles" type="Particles2D" parent="."]
 visible = false
 modulate = Color( 0.678431, 0.686275, 0.937255, 0.737255 )
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( -95.6821, -10.6758 )
 scale = Vector2( 2, 0.5 )
 amount = 50
 speed_scale = 3.0
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 5 )
 texture = ExtResource( 15 )
 
 [node name="Portacles" type="Particles2D" parent="."]
 visible = false
 modulate = Color( 0.807843, 0.490196, 0.937255, 0.831373 )
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( -97.2297, -22.2825 )
 scale = Vector2( 2, 0.5 )
 amount = 150
 lifetime = 2.0
 speed_scale = 10.0
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 5 )
 texture = ExtResource( 15 )
 
-[node name="Hit" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource( 5 )
-autoplay = true
+[node name="Yeah" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Nitro" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 16 )
 
-[node name="Yeah" type="AudioStreamPlayer2D" parent="."]
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 17 )
-volume_db = -50.0
-autoplay = true
-
 [node name="Hype" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 18 )
+stream = ExtResource( 17 )
 volume_db = -10.0
 
 [node name="End" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 19 )
+stream = ExtResource( 18 )
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -194,7 +215,7 @@ anims/End = SubResource( 6 )
 
 [node name="Ending" type="CanvasLayer" parent="."]
 
-[node name="TimeIndicator" parent="Ending" instance=ExtResource( 20 )]
+[node name="TimeIndicator" parent="Ending" instance=ExtResource( 19 )]
 visible = false
 margin_left = -77.1128
 margin_top = 303.48
@@ -375,9 +396,9 @@ valign = 1
 [node name="EndingTimer" type="Timer" parent="Ending"]
 
 [node name="Effect" type="AudioStreamPlayer" parent="Ending"]
-stream = ExtResource( 22 )
+stream = ExtResource( 21 )
 
-[node name="CRT" parent="Ending" instance=ExtResource( 23 )]
+[node name="CRT" parent="Ending" instance=ExtResource( 22 )]
 visible = false
 [connection signal="animation_finished" from="Graphics/Anime" to="." method="_on_Anime_animation_finished"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
