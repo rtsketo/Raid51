@@ -6,7 +6,6 @@ func _ready():
 	if OS.get_name() == "Android":
 		$Control/Volume.visible = false
 		$Control/Label.text = "Bump with [your nose] to raid!"
-	
 	$Control/VSlider.set_value(0)
 	$IntroMusic.play(1.5)
 

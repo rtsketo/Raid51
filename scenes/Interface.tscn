@@ -45,6 +45,9 @@ material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BG" type="Control" parent="."]
 margin_right = 40.0
@@ -72,7 +75,6 @@ margin_right = 129.936
 margin_bottom = -258.587
 
 [node name="Volume" type="Button" parent="Control"]
-visible = false
 margin_left = 972.241
 margin_top = 10.2964
 margin_right = 1678.24
@@ -110,7 +112,6 @@ position = Vector2( 834.06, 202.03 )
 position = Vector2( 600, 0 )
 current = true
 limit_smoothed = true
-drag_margin_h_enabled = false
 smoothing_enabled = true
 smoothing_speed = 3.0
 drag_margin_left = 0.0

@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/Collectable.gd" type="Script" id=1]
 [ext_resource path="res://assets/shadow2.png" type="Texture" id=2]
+[ext_resource path="res://assets/particle.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 30.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+color = Color( 1, 1, 1, 0.784314 )
+
+[sub_resource type="CircleShape2D" id=2]
 radius = 30.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "Bounce"
+[sub_resource type="Animation" id=3]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -58,13 +69,24 @@ texture = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -12.0279 )
 
+[node name="Parti" type="Particles2D" parent="."]
+amount = 20
+lifetime = 2.0
+speed_scale = 10.0
+local_coords = false
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="Colli" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Anime" type="AnimationPlayer" parent="."]
 autoplay = "Bounce"
 playback_speed = 2.5
-anims/Bounce = SubResource( 2 )
+anims/Bounce = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 visible = false

@@ -13,7 +13,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="Obstacle" instance=ExtResource( 1 )]
+[node name="Obstacle" index="0" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="Graphics" index="0"]
 position = Vector2( 8.3415, 23.0384 )

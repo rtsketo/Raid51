@@ -18,22 +18,23 @@ var speed = 50
 var speedX = 0
 var speedY = 0
 var endingCount
-var diff = 0
+var posy = 0
 var pos = 0
 var dir = 1
 
-onready var hitMeBaby = [
+var hitMeBaby = [
 preload("res://assets/sounds/Area 51 SF part 2/kraygh1.wav"),
 preload("res://assets/sounds/Area 51 SF part 2/kraygh2.wav"),
 preload("res://assets/sounds/Area 51 SF part 2/kraugh3.wav"),
 preload("res://assets/sounds/Area 51 SF part 2/kraugh4.wav")]
 
-onready var yeahBaby = [
+var yeahBaby = [
 preload("res://assets/sounds/Area 51 SF part 3/yeah1.wav"),
 preload("res://assets/sounds/Area 51 SF part 3/yeah2.wav"),
 preload("res://assets/sounds/Area 51 SF part 3/yooho1.wav"),
 preload("res://assets/sounds/Area 51 SF part 3/yooho2.wav"),
 preload("res://assets/sounds/Area 51 SF part 3/yooho3.wav")]
+var collect = preload("res://scenes/Collected.tscn")
 
 func _ready():
 	sprites = [
@@ -57,19 +58,20 @@ func _ready():
 	$Ending/Control/Item8]
 
 func _process(delta):
-	var calibra = 7
+	var calibra = 5
 	var preDir = dir
 	speedX += speed
-	
+		
 	if ended and Input.is_action_pressed("ui_accept"):
-		var root = get_tree().get_root() 
-		Input.action_release("ui_accept")
-		root.get_child(root.get_child_count()-1).queue_free()
 		var ui = load("res://scenes/Interface.tscn").instance()
+		var root = get_tree().get_root().get_child(0) 
+		Input.action_release("ui_accept")
+		root.get_child(0).queue_free()
 		root.add_child(ui)
 	
+	var diff = pos - posy
 	if diff != 0:
-		speedY = abs(diff) * calibra
+		speedY = min(abs(diff) * calibra, 400)
 		dir = -sign(diff)
 	elif Input.is_action_pressed("ui_up"):
 		speedY += speed
@@ -117,6 +119,8 @@ func _process(delta):
 	if $Graphics/Anime.animation != "Run":
 		speedY = 0
 	
+	if speedY == 0: pos = posy
+	
 	#move_and_collide(Vector2(speedX, dir*speedY)*delta)
 	move_local_x(speedX*delta)
 	move_local_y(speedY*delta*dir)
@@ -133,6 +137,13 @@ func speed_up(collectable):
 	collected.append(collectable)
 	$Yeah.stream = yeahBaby[randi()%5]
 	$Yeah.play()
+	
+	var collinstance = collect.instance()
+	var sprite = collinstance.get_node("Sprite")
+	sprite.texture = collectable.get_node("Sprite").texture
+	sprite.scale = collectable.get_node("Sprite").scale
+	$Ending/Collect.add_child(collinstance)
+	collinstance.start(collectable.get_global_transform_with_canvas().origin, collected.size())
 
 func _on_Timer_timeout():
 	if maxSpeed < 1200: maxSpeed += 20
@@ -165,6 +176,7 @@ func end_this():
 	start = false
 	$AnimeEnding.play("End")
 	$Ending/CRT.visible = true
+	$Ending/Collect.visible = false
 	endingCount = collected.size() + 5
 	for x in range(collected.size()):
 		sprites[x].texture = collected[x].get_node("Sprite").texture
@@ -210,8 +222,7 @@ func decreaseDB(node, x):
 
 func _input(event):
 	if event is InputEventScreenDrag and press:
-		var posy = event.position.y
-		diff = pos - posy
+		posy = event.position.y
 	
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
@@ -219,6 +230,6 @@ func _input(event):
 			press = true
 		else: 
 			press = false
-			diff = 0
+			posy = pos
 
 

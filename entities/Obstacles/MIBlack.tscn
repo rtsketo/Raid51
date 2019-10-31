@@ -25,6 +25,3 @@ position = Vector2( 0.807037, -57.1358 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 playing = true
-
-[node name="Colli" parent="." index="1"]
-visible = false

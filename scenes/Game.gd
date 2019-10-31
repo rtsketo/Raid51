@@ -2,7 +2,7 @@ extends Control
 
 func _ready():
 	var ui = load("res://scenes/Interface.tscn").instance()
-	Input.action_release("ui_accept")
+	set_process_input(true)
 	add_child(ui)
 
 func _input(event):

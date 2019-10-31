@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/shadow1.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/fonts/Supercell-Magic_5.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://assets/sounds/Area 51 SF part 1/Play Button.wav" type="AudioStream" id=21]
 [ext_resource path="res://CRT_Shader.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/loot/bagactuallyfullofchips.png" type="Texture" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -65,7 +66,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 6.0
+radius = 15.0
 
 [sub_resource type="CanvasItemMaterial" id=4]
 particles_animation = true
@@ -75,11 +76,23 @@ particles_anim_loop = false
 
 [sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 1
-emission_sphere_radius = 63.27
+emission_sphere_radius = 20.0
 flag_disable_z = true
 spread = 115.34
 flatness = 0.17
-gravity = Vector3( -100, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+anim_speed = 1.0
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 60.0
+flag_disable_z = true
+spread = 115.34
+flatness = 0.17
+gravity = Vector3( 0, 0, 0 )
 angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -119,6 +132,8 @@ font_data = ExtResource( 20 )
 [sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 20 )
 
+[sub_resource type="ShaderMaterial" id=9]
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -134,14 +149,14 @@ texture = ExtResource( 2 )
 position = Vector2( 15.1984, -26.6359 )
 frames = SubResource( 1 )
 animation = "Run"
-frame = 1
+frame = 5
 playing = true
 
 [node name="Shadow" type="AnimationPlayer" parent="Graphics"]
 anims/Shadow = SubResource( 2 )
 
 [node name="Colli" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 20 )
+position = Vector2( 0, 10 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
@@ -150,7 +165,7 @@ modulate = Color( 0.886275, 0.588235, 0.588235, 1 )
 position = Vector2( 600, 0 )
 current = true
 limit_smoothed = true
-drag_margin_h_enabled = false
+drag_margin_v_enabled = true
 smoothing_enabled = true
 smoothing_speed = 3.0
 drag_margin_left = 0.0
@@ -163,8 +178,9 @@ editor_draw_drag_margin = true
 visible = false
 modulate = Color( 0.678431, 0.686275, 0.937255, 0.737255 )
 material = SubResource( 4 )
-position = Vector2( -95.6821, -10.6758 )
-scale = Vector2( 2, 0.5 )
+position = Vector2( -2.80304, -18.3575 )
+rotation = 1.21649
+scale = Vector2( 1, 2 )
 amount = 50
 speed_scale = 3.0
 local_coords = false
@@ -175,13 +191,14 @@ texture = ExtResource( 15 )
 visible = false
 modulate = Color( 0.807843, 0.490196, 0.937255, 0.831373 )
 material = SubResource( 4 )
-position = Vector2( -97.2297, -22.2825 )
+position = Vector2( -48.1332, -22.2825 )
+rotation = -0.13439
 scale = Vector2( 2, 0.5 )
 amount = 150
 lifetime = 2.0
 speed_scale = 10.0
 local_coords = false
-process_material = SubResource( 5 )
+process_material = SubResource( 10 )
 texture = ExtResource( 15 )
 
 [node name="Yeah" type="AudioStreamPlayer2D" parent="."]
@@ -215,6 +232,8 @@ anims/End = SubResource( 6 )
 
 [node name="Ending" type="CanvasLayer" parent="."]
 
+[node name="Collect" type="Node2D" parent="Ending"]
+
 [node name="TimeIndicator" parent="Ending" instance=ExtResource( 19 )]
 visible = false
 margin_left = -77.1128
@@ -223,7 +242,6 @@ margin_right = -37.1128
 margin_bottom = 343.48
 
 [node name="Control" type="Node2D" parent="Ending"]
-editor/display_folded = true
 visible = false
 position = Vector2( -50, 0 )
 
@@ -238,6 +256,9 @@ custom_fonts/font = SubResource( 7 )
 text = "You barely escaped from Area 51!"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Items" type="Label" parent="Ending/Control"]
 visible = false
@@ -266,7 +287,9 @@ valign = 1
 
 [node name="Sprite1" type="Sprite" parent="Ending/Control"]
 visible = false
+material = SubResource( 9 )
 position = Vector2( 300, 150 )
+texture = ExtResource( 23 )
 
 [node name="Sprite2" type="Sprite" parent="Ending/Control"]
 visible = false

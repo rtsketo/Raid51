@@ -34,7 +34,6 @@ scale = Vector2( -0.6, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 74.1657, 27.8891 )
 motion_scale = Vector2( 0.1, 0 )
 motion_mirroring = Vector2( 1349.65, 0 )
@@ -47,7 +46,6 @@ scale = Vector2( 0.6, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 74.1657, 27.8891 )
 motion_scale = Vector2( 0.12, 0 )
 motion_mirroring = Vector2( 1237.2, 0 )
@@ -58,7 +56,6 @@ scale = Vector2( 0.6, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 74.1657, 27.8891 )
 motion_scale = Vector2( 0.13, 0 )
 motion_mirroring = Vector2( 1350, 0 )
@@ -69,7 +66,6 @@ scale = Vector2( 0.6, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 motion_scale = Vector2( 0.2, 1 )
 motion_mirroring = Vector2( 3659, 0 )
 
@@ -85,23 +81,21 @@ texture = ExtResource( 6 )
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -200, 15.646 )
-motion_scale = Vector2( 1, 0 )
 motion_mirroring = Vector2( 2699, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
-modulate = Color( 0.705882, 0.678431, 0.270588, 1 )
+modulate = Color( 0.890196, 0.85098, 0.541176, 1 )
 position = Vector2( 678.349, -73.8969 )
 scale = Vector2( 0.6, 0.5 )
 texture = ExtResource( 7 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
-modulate = Color( 0.705882, 0.678431, 0.270588, 1 )
+modulate = Color( 0.890196, 0.85098, 0.541176, 1 )
 position = Vector2( 2028, -73.897 )
 scale = Vector2( -0.6, 0.5 )
 texture = ExtResource( 7 )
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 525, -5 )
 motion_scale = Vector2( 0.85, 1 )
 motion_mirroring = Vector2( 2455.8, 0 )
@@ -118,7 +112,6 @@ scale = Vector2( -0.3, 0.2 )
 texture = ExtResource( 8 )
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 575, 65 )
 motion_scale = Vector2( 0.9, 1 )
 motion_mirroring = Vector2( 2455.8, 0 )
@@ -135,7 +128,6 @@ scale = Vector2( -0.3, 0.2 )
 texture = ExtResource( 8 )
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 625, 135 )
 motion_scale = Vector2( 0.95, 1 )
 motion_mirroring = Vector2( 2455.8, 0 )
@@ -152,7 +144,6 @@ scale = Vector2( -0.3, 0.2 )
 texture = ExtResource( 8 )
 
 [node name="ParallaxLayer11" type="ParallaxLayer" parent="ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 675, 205 )
 motion_mirroring = Vector2( 2455.8, 0 )
 
